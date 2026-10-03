@@ -1,91 +1,151 @@
 .page {
-  --ink: #202b28;
-  --muted: #71807b;
-  --accent: #d45a3d;
-  --line: #e1e7e3;
+  --background: #fafafa;
+  --foreground: #fff;
 
-  min-height: 100vh;
-  padding: 52px clamp(20px, 6vw, 88px) 80px;
-  color: var(--ink);
-  background-color: #f5f7f4;
-  background-image: radial-gradient(#dfe6e0 0.65px, transparent 0.65px);
-  background-size: 17px 17px;
-  font-family: var(--font-geist-sans), sans-serif;
-}
+  --text-primary: #000;
+  --text-secondary: #666;
 
-.header {
-  max-width: 1440px;
-  margin: 0 auto 34px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--line);
-}
+  --button-primary-hover: #383838;
+  --button-secondary-hover: #f2f2f2;
+  --button-secondary-border: #ebebeb;
 
-.eyebrow {
-  margin-bottom: 14px;
-  color: var(--accent);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.4px;
-}
-
-.headingRow {
   display: flex;
-  align-items: baseline;
+  min-height: 100vh;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-geist-sans);
+  background-color: var(--background);
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  max-width: 800px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: var(--foreground);
+  padding: 120px 60px;
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 24px;
+}
+
+.intro h1 {
+  max-width: 320px;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 48px;
+  letter-spacing: -2.4px;
+  text-wrap: balance;
+  color: var(--text-primary);
+}
+
+.intro p {
+  max-width: 440px;
+  font-size: 18px;
+  line-height: 32px;
+  text-wrap: balance;
+  color: var(--text-secondary);
+}
+
+.intro a {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.ctas {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 440px;
   gap: 16px;
-}
-
-.headingRow h1 {
-  font-size: clamp(30px, 4vw, 48px);
-  line-height: 1.15;
-  font-weight: 650;
-}
-
-.count {
-  color: var(--muted);
   font-size: 14px;
 }
 
-.subtitle {
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 15px;
+.ctas a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 128px;
+  border: 1px solid transparent;
+  transition: 0.2s;
+  cursor: pointer;
+  width: fit-content;
+  font-weight: 500;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-  max-width: 1440px;
-  margin: 0 auto;
+a.primary {
+  background: var(--text-primary);
+  color: var(--background);
+  gap: 8px;
 }
 
-.message {
-  max-width: 1440px;
-  margin: 48px auto;
-  color: var(--muted);
-  font-size: 16px;
-  text-align: center;
+a.secondary {
+  border-color: var(--button-secondary-border);
 }
 
-@media (max-width: 1000px) {
-  .grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  a.primary:hover {
+    background: var(--button-primary-hover);
+    border-color: transparent;
+  }
+
+  a.secondary:hover {
+    background: var(--button-secondary-hover);
+    border-color: transparent;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
+  .main {
+    padding: 48px 24px;
+  }
+
+  .intro {
+    gap: 16px;
+  }
+
+  .intro h1 {
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -1.92px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .logo {
+    filter: invert();
+  }
+
   .page {
-    padding: 34px 18px 56px;
-  }
+    --background: #000;
+    --foreground: #000;
 
-  .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    --text-primary: #ededed;
+    --text-secondary: #999;
+
+    --button-primary-hover: #ccc;
+    --button-secondary-hover: #1a1a1a;
+    --button-secondary-border: #1a1a1a;
   }
 }
 
-@media (max-width: 420px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+.code {
+  font-family: var(--font-geist-mono);
+  font-size: 0.9em;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  padding: 0.1em 0.4em;
+  border-radius: 6px;
 }
