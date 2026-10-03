@@ -142,6 +142,30 @@
   color: #686d65;
 }
 
+.deletedSection {
+  margin-top: 12px;
+  padding-top: 36px;
+  border-top: 1px solid #d8d9d1;
+}
+
+.deletedHeading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.deletedHeading h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.deletedProduct {
+  background: #f9f8f4;
+}
+
 @media (max-width: 900px) {
   .productList {
     grid-template-columns: repeat(3, minmax(0, 1fr));
