@@ -39,6 +39,21 @@ export default function Home() {
     );
   };
 
+  const restoreProduct = (productId) => {
+    const restoredProduct = deletedProducts.find(
+      (product) => product.id === productId,
+    );
+
+    if (!restoredProduct) {
+      return;
+    }
+
+    setProducts((currentProducts) => [...currentProducts, restoredProduct]);
+    setDeletedProducts((currentDeletedProducts) =>
+      currentDeletedProducts.filter((product) => product.id !== productId),
+    );
+  };
+
   return (
     <div className={styles.page}>
       <main className={styles.content}>
@@ -115,7 +130,19 @@ export default function Home() {
                   <div className={styles.productInfo}>
                     <p className={styles.category}>{product.category}</p>
                     <h3 className={styles.productTitle}>{product.title}</h3>
-                    <p className={styles.price}>${product.price.toFixed(2)}</p>
+                    <div className={styles.productFooter}>
+                      <p className={styles.price}>
+                        ${product.price.toFixed(2)}
+                      </p>
+                      <button
+                        className={styles.restoreButton}
+                        type="button"
+                        onClick={() => restoreProduct(product.id)}
+                        aria-label={`${product.title} - დაბრუნება`}
+                      >
+                        დაბრუნება
+                      </button>
+                    </div>
                   </div>
                 </li>
               ))}

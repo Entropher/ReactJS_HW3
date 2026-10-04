@@ -137,6 +137,31 @@
   outline-offset: 2px;
 }
 
+.restoreButton {
+  min-height: 34px;
+  padding: 0 11px;
+  border: 1px solid #b9d0bd;
+  border-radius: 4px;
+  background: #fff;
+  color: #355c40;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease;
+}
+
+.restoreButton:hover {
+  border-color: #355c40;
+  background: #eff5ef;
+}
+
+.restoreButton:focus-visible {
+  outline: 2px solid #355c40;
+  outline-offset: 2px;
+}
+
 .message {
   padding: 36px 0;
   color: #686d65;
